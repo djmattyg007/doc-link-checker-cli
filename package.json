@@ -29,6 +29,11 @@
     "reformat": "prettier -w src"
   },
   "files": [
+    "index.js",
+    "src/**/*.ts",
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.js.map",
     "tsconfig.json"
   ],
   "sideEffects": false,
