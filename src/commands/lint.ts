@@ -71,11 +71,6 @@ export class LintCommand extends Command {
   cwd = Option.String({ name: "directory", required: false });
   /* eslint-enable @typescript-eslint/lines-between-class-members */
 
-  static override schema = [
-    t.hasMutuallyExclusiveKeys(["include", "includeExtend"]),
-    t.hasMutuallyExclusiveKeys(["exclude", "excludeExtend"]),
-  ];
-
   static override usage = {
     description: "Check documentation files for broken links.",
     details: `
