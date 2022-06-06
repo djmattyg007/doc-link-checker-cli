@@ -1,5 +1,8 @@
 {
   "prettier": true,
+  "ignores": [
+    "index.js"
+  ],
   "rules": {
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/ban-types": [
@@ -13,7 +16,16 @@
     ],
     "@typescript-eslint/no-implicit-any-catch": "off",
     "@typescript-eslint/padding-line-between-statements": "off",
+    "unicorn/prefer-spread": "off",
     "unicorn/prefer-ternary": "off",
     "no-warning-comments": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": "src/commands/*.ts",
+      "rules": {
+        "@typescript-eslint/member-ordering": "off"
+      }
+    }
+  ]
 }

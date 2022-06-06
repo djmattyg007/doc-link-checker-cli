@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import { Command, Option } from "clipanion";
 import * as t from "typanion";
 
@@ -5,8 +7,8 @@ import { markdownOptions, scanFiles, verifyLinks } from "doc-link-checker";
 
 import { fileErrorMsgs, anchorErrorMsgs } from "../error-msg.js";
 
-const DEFAULT_INCLUDE_GLOBS: ReadonlyArray<string> = ["**/*.md", "**/*.mdown", "**/*.markdown"];
-const DEFAULT_EXCLUDE_GLOBS: ReadonlyArray<string> = [
+const defaultIncludeGlobs: ReadonlyArray<string> = ["**/*.md", "**/*.mdown", "**/*.markdown"];
+const defaultExcludeGlobs: ReadonlyArray<string> = [
   "**/node_modules/**",
   "**/.venv/**",
   "**/venv/**",
@@ -18,6 +20,7 @@ const exitCode = t.cascade(t.isNumber(), [t.isInteger(), t.isInInclusiveRange(0,
 export class LintCommand extends Command {
   static override paths = [["lint"]];
 
+  /* eslint-disable @typescript-eslint/lines-between-class-members */
   caseSensitive = Option.Boolean("--case-sensitive", false, {
     description: "Make glob matching case-sensitive. Defaults to case-insensitive.",
   });
@@ -51,6 +54,7 @@ export class LintCommand extends Command {
     description: "The status code to exit with when there are errors.",
     validator: exitCode,
   });
+  /* eslint-enable @typescript-eslint/lines-between-class-members */
 
   static override schema = [
     t.hasMutuallyExclusiveKeys(["include", "includeExtend"]),
@@ -63,9 +67,9 @@ export class LintCommand extends Command {
 
   async execute(): Promise<number> {
     const includeGlobs =
-      this.include.length > 0 ? this.include : DEFAULT_INCLUDE_GLOBS.concat(this.includeExtend);
+      this.include.length > 0 ? this.include : defaultIncludeGlobs.concat(this.includeExtend);
     const excludeGlobs =
-      this.exclude.length > 0 ? this.exclude : DEFAULT_EXCLUDE_GLOBS.concat(this.excludeExtend);
+      this.exclude.length > 0 ? this.exclude : defaultExcludeGlobs.concat(this.excludeExtend);
 
     const scanOptions = {
       basePath: process.cwd(),
@@ -79,33 +83,28 @@ export class LintCommand extends Command {
       let foundError = false;
       const verify = verifyLinks(scanOptions.basePath, result.file, result.links);
       for await (const verifyError of verify) {
-        if (foundError === false) {
+        if (!foundError) {
           this.context.stdout.write(`--- ${result.file.path} ---`);
           foundError = true;
         }
 
-        const errorMsg =
+        const errorMessage =
           verifyError.errorType === "file"
             ? fileErrorMsgs[verifyError.errorCode]
             : anchorErrorMsgs[verifyError.errorCode];
 
-        const position = verifyError.link.position;
+        const { href, position } = verifyError.link;
         const lineMarker = position ? String(position.start.line) : "?";
-        const href = verifyError.link.href;
-        this.context.stdout.write(`line ${lineMarker}: ${href} (${errorMsg})`);
+        this.context.stdout.write(`line ${lineMarker}: ${href} (${errorMessage})`);
       }
 
-      if (foundError === true) {
+      if (foundError) {
         foundAnyError = true;
       } else {
         this.context.stdout.write(`${result.file.path} [OK]`);
       }
     }
 
-    if (foundAnyError === true) {
-      return this.failureCode;
-    } else {
-      return this.successCode;
-    }
+    return foundAnyError ? this.failureCode : this.successCode;
   }
 }
