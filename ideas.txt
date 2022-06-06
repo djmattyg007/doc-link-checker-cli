@@ -1,0 +1,6 @@
+add colour to linting output
+
+add multiple reporters, for customisable output
+- maybe make reporters pluggable?
+
+add config file?
