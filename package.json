@@ -1,0 +1,39 @@
+{
+  "name": "doc-link-checker-cli",
+  "version": "1.0.0",
+  "description": "A CLI wrapper around doc-link-checker so you can verify documentation links in a script.",
+  "license": "GPLv3",
+  "type": "module",
+  "packageManager": "yarn@3.2.1",
+  "dependencies": {
+    "clipanion": "^3.2.0-rc.11",
+    "doc-link-checker": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^16",
+    "prettier": "^2.6.2",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3",
+    "xo": "^0.49.0"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "tsconfig.json"
+  ],
+  "sideEffects": false,
+  "homepage": "https://github.com/djmattyg007/doc-link-checker-cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/djmattyg007/doc-link-checker-cli.git"
+  },
+  "keywords": [
+    "link checker",
+    "links",
+    "linter",
+    "linting",
+    "markdown",
+    "documentation"
+  ]
+}
