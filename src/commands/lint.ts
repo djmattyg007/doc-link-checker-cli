@@ -5,11 +5,7 @@ import { markdownOptions, scanFiles, verifyLinks } from "doc-link-checker";
 
 import { fileErrorMsgs, anchorErrorMsgs } from "../error-msg.js";
 
-const DEFAULT_INCLUDE_GLOBS: ReadonlyArray<string> = [
-  "**/*.md",
-  "**/*.mdown",
-  "**/*.markdown",
-];
+const DEFAULT_INCLUDE_GLOBS: ReadonlyArray<string> = ["**/*.md", "**/*.mdown", "**/*.markdown"];
 const DEFAULT_EXCLUDE_GLOBS: ReadonlyArray<string> = [
   "**/node_modules/**",
   "**/.venv/**",
@@ -17,10 +13,7 @@ const DEFAULT_EXCLUDE_GLOBS: ReadonlyArray<string> = [
   "**/vendor/**",
 ];
 
-const exitCode = t.cascade(t.isNumber(), [
-  t.isInteger(),
-  t.isInInclusiveRange(0, 255),
-]);
+const exitCode = t.cascade(t.isNumber(), [t.isInteger(), t.isInInclusiveRange(0, 255)]);
 
 export class LintCommand extends Command {
   static override paths = [["lint"]];
@@ -37,14 +30,17 @@ export class LintCommand extends Command {
     description: "A glob string to match files that should be checked. Can specify multiple times.",
   });
   exclude = Option.Array("--exclude", [], {
-    description: "A glob string to match files that should NOT be checked. Can specify multiple times.",
+    description:
+      "A glob string to match files that should NOT be checked. Can specify multiple times.",
   });
 
   includeExtend = Option.Array("--include-extend", [], {
-    description: "A glob string added to the default include glob strings to match files that should be checked. Can specify multiple times.",
+    description:
+      "A glob string added to the default include glob strings to match files that should be checked. Can specify multiple times.",
   });
   excludeExtend = Option.Array("--exclude-extend", [], {
-    description: "A glob string added to the default exclude glob strings to match files that should NOT be checked. Can specify multiple times.",
+    description:
+      "A glob string added to the default exclude glob strings to match files that should NOT be checked. Can specify multiple times.",
   });
 
   successCode = Option.String("--success-code", "0", {
@@ -66,12 +62,10 @@ export class LintCommand extends Command {
   };
 
   async execute(): Promise<number> {
-    const includeGlobs = this.include.length > 0
-      ? this.include
-      : DEFAULT_INCLUDE_GLOBS.concat(this.includeExtend);
-    const excludeGlobs = this.exclude.length > 0
-      ? this.exclude
-      : DEFAULT_EXCLUDE_GLOBS.concat(this.excludeExtend);
+    const includeGlobs =
+      this.include.length > 0 ? this.include : DEFAULT_INCLUDE_GLOBS.concat(this.includeExtend);
+    const excludeGlobs =
+      this.exclude.length > 0 ? this.exclude : DEFAULT_EXCLUDE_GLOBS.concat(this.excludeExtend);
 
     const scanOptions = {
       basePath: process.cwd(),
@@ -90,7 +84,10 @@ export class LintCommand extends Command {
           foundError = true;
         }
 
-        const errorMsg = verifyError.errorType === "file" ? fileErrorMsgs[verifyError.errorCode] : anchorErrorMsgs[verifyError.errorCode];
+        const errorMsg =
+          verifyError.errorType === "file"
+            ? fileErrorMsgs[verifyError.errorCode]
+            : anchorErrorMsgs[verifyError.errorCode];
 
         const position = verifyError.link.position;
         const lineMarker = position ? String(position.start.line) : "?";
