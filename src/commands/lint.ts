@@ -98,7 +98,7 @@ export class LintCommand extends Command {
       const verify = verifyLinks(scanOptions.basePath, result.file, result.links);
       for await (const verifyError of verify) {
         if (!foundError) {
-          this.context.stdout.write(`--- ${result.file.path} ---`);
+          this.context.stdout.write(`--- ${result.file.path} ---\n`);
           foundError = true;
         }
 
@@ -109,13 +109,13 @@ export class LintCommand extends Command {
 
         const { href, position } = verifyError.link;
         const lineMarker = position ? String(position.start.line) : "?";
-        this.context.stdout.write(`line ${lineMarker}: ${href} (${errorMessage})`);
+        this.context.stdout.write(`line ${lineMarker}: ${href} (${errorMessage})\n`);
       }
 
       if (foundError) {
         foundAnyError = true;
       } else {
-        this.context.stdout.write(`${result.file.path} [OK]`);
+        this.context.stdout.write(`${result.file.path} [OK]\n`);
       }
     }
 
