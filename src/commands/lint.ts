@@ -19,7 +19,7 @@ const DEFAULT_EXCLUDE_GLOBS: ReadonlyArray<string> = [
 
 const exitCode = t.cascade(t.isNumber(), [
   t.isInteger(),
-  t.isInInclusiveRange(1, 255),
+  t.isInInclusiveRange(0, 255),
 ]);
 
 export class LintCommand extends Command {
