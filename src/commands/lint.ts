@@ -25,22 +25,45 @@ const exitCode = t.cascade(t.isNumber(), [
 export class LintCommand extends Command {
   static override paths = [["lint"]];
 
-  caseSensitive = Option.Boolean("--case-sensitive", false);
-  mdType = Option.String("--md-type", markdownOptions.mdDefaultType, { validator: t.isEnum(markdownOptions.mdTypes) });
+  caseSensitive = Option.Boolean("--case-sensitive", false, {
+    description: "Make glob matching case-sensitive. Defaults to case-insensitive.",
+  });
+  mdType = Option.String("--md-type", markdownOptions.mdDefaultType, {
+    description: "Use a custom markdown parser. Defaults to standard commonmark.",
+    validator: t.isEnum(markdownOptions.mdTypes),
+  });
 
-  include = Option.Array("--include", []);
-  exclude = Option.Array("--exclude", []);
+  include = Option.Array("--include", [], {
+    description: "A glob string to match files that should be checked. Can specify multiple times.",
+  });
+  exclude = Option.Array("--exclude", [], {
+    description: "A glob string to match files that should NOT be checked. Can specify multiple times.",
+  });
 
-  includeExtend = Option.Array("--include-extend", []);
-  excludeExtend = Option.Array("--exclude-extend", []);
+  includeExtend = Option.Array("--include-extend", [], {
+    description: "A glob string added to the default include glob strings to match files that should be checked. Can specify multiple times.",
+  });
+  excludeExtend = Option.Array("--exclude-extend", [], {
+    description: "A glob string added to the default exclude glob strings to match files that should NOT be checked. Can specify multiple times.",
+  });
 
-  successCode = Option.String("--success-code", "0", { validator: exitCode });
-  failureCode = Option.String("--failure-code", "1", { validator: exitCode });
+  successCode = Option.String("--success-code", "0", {
+    description: "The status code to exit with when there are no errors.",
+    validator: exitCode,
+  });
+  failureCode = Option.String("--failure-code", "1", {
+    description: "The status code to exit with when there are errors.",
+    validator: exitCode,
+  });
 
   static override schema = [
     t.hasMutuallyExclusiveKeys(["include", "includeExtend"]),
     t.hasMutuallyExclusiveKeys(["exclude", "excludeExtend"]),
   ];
+
+  static override usage = {
+    description: "Lint documentation files.",
+  };
 
   async execute(): Promise<number> {
     const includeGlobs = this.include.length > 0
