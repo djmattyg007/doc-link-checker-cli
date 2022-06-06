@@ -1,12 +1,5 @@
 {
   "prettier": true,
-  "plugins": ["mocha"],
-  "extends": [
-    "plugin:mocha/recommended"
-  ],
-  "ignores": [
-    "tests/fixtures/**"
-  ],
   "rules": {
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/ban-types": [
@@ -22,20 +15,5 @@
     "@typescript-eslint/padding-line-between-statements": "off",
     "unicorn/prefer-ternary": "off",
     "no-warning-comments": "off"
-  },
-  "overrides": [
-    {
-      "files": "tests/**/test-*.ts",
-      "rules": {
-        "unicorn/no-await-expression-member": "off",
-        "max-params": ["error", { "max": 5 }]
-      }
-    },
-    {
-      "files": "tests/**/*.ts",
-      "rules": {
-        "node/prefer-global/process": ["error", "always"]
-      }
-    }
-  ]
+  }
 }
