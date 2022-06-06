@@ -889,6 +889,8 @@ __metadata:
     typanion: ^3.9.0
     typescript: ^4.7.3
     xo: ^0.49.0
+  bin:
+    doc-link-checker: ./index.js
   languageName: unknown
   linkType: soft
 

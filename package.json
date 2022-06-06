@@ -20,6 +20,9 @@
   "engines": {
     "node": ">=16"
   },
+  "bin": {
+    "doc-link-checker": "./index.js"
+  },
   "scripts": {
     "build": "tsc --declaration --noEmitOnError",
     "lint": "xo",
