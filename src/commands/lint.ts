@@ -1,3 +1,4 @@
+import path from "node:path";
 import process from "node:process";
 
 import { Command, Option } from "clipanion";
@@ -16,6 +17,18 @@ const defaultExcludeGlobs: ReadonlyArray<string> = [
 ];
 
 const exitCode = t.cascade(t.isNumber(), [t.isInteger(), t.isInInclusiveRange(0, 255)]);
+
+function resolveBasePath(cwd: string | undefined): string {
+  if (!cwd) {
+    return process.cwd();
+  }
+
+  if (path.isAbsolute(cwd)) {
+    return cwd;
+  }
+
+  return path.resolve(process.cwd(), cwd);
+}
 
 export class LintCommand extends Command {
   static override paths = [["lint"]];
@@ -54,6 +67,8 @@ export class LintCommand extends Command {
     description: "The status code to exit with when there are errors.",
     validator: exitCode,
   });
+
+  cwd = Option.String({ name: "directory", required: false });
   /* eslint-enable @typescript-eslint/lines-between-class-members */
 
   static override schema = [
@@ -62,7 +77,11 @@ export class LintCommand extends Command {
   ];
 
   static override usage = {
-    description: "Lint documentation files.",
+    description: "Check documentation files for broken links.",
+    details: `
+      Supply a directory to look in for documentation files that have broken links.
+      Uses the current working directory by default.
+    `,
   };
 
   async execute(): Promise<number> {
@@ -72,7 +91,7 @@ export class LintCommand extends Command {
       this.exclude.length > 0 ? this.exclude : defaultExcludeGlobs.concat(this.excludeExtend);
 
     const scanOptions = {
-      basePath: process.cwd(),
+      basePath: resolveBasePath(this.cwd),
       caseSensitive: this.caseSensitive,
       mdType: this.mdType,
     };
