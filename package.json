@@ -19,6 +19,11 @@
   "engines": {
     "node": ">=16"
   },
+  "scripts": {
+    "build": "tsc --declaration --noEmitOnError",
+    "lint": "xo",
+    "reformat": "prettier -w src"
+  },
   "files": [
     "tsconfig.json"
   ],
