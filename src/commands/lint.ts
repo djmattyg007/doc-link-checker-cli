@@ -23,11 +23,7 @@ function resolveBasePath(cwd: string | undefined): string {
     return process.cwd();
   }
 
-  if (path.isAbsolute(cwd)) {
-    return cwd;
-  }
-
-  return path.resolve(process.cwd(), cwd);
+  return path.resolve(cwd);
 }
 
 export class LintCommand extends Command {
