@@ -95,9 +95,11 @@ export class LintCommand extends Command {
       return 1;
     }
 
+    let foundAnyFiles = false;
     let foundAnyError = false;
     const scan = scanFiles(includeGlobs, excludeGlobs, scanOptions);
     for await (const result of scan) {
+      foundAnyFiles = true;
       let foundError = false;
       const verify = verifyLinks(scanOptions.basePath, result.file, result.links);
       for await (const verifyError of verify) {
@@ -121,6 +123,11 @@ export class LintCommand extends Command {
       } else {
         this.context.stdout.write(`${result.file.path} [OK]\n`);
       }
+    }
+
+    if (!foundAnyFiles) {
+      this.context.stderr.write("Found no files!");
+      return 1;
     }
 
     return foundAnyError ? this.failureCode : this.successCode;
