@@ -39,10 +39,20 @@ doc-link-checker lint
 ```
 
 It will automatically scan for all Markdown files in the current working directory, and report on
-all of them. You can expect output like so:
+all of them. The default output looks a bit like this:
 
 ```
-<INSERT OUTPUT HERE>
+README.md [OK]
+-- CONTRIBUTING.md --
+line 20: ../README.md (Link references a file outside of the base directory.)
+docs/support.md [OK]
+-- docs/new-doc.md --
+line 5: ../nope.md (Link references a file that does not exist.)
+docs/test.md [OK]
+-- docs/faq.md --
+line 12: ../README.md#nope (Link references a non-existent header.)
+other-docs/something.md [OK]
+other-docs/another-thing.md [OK]
 ```
 
 ### Custom directory
@@ -90,6 +100,25 @@ you're using Docusaurus, you should specify `gfm` as your Markdown type:
 doc-link-checker lint --md-type gfm
 ```
 
+### Exit codes
+
+If for some reason you need to control exit codes, you can do so with `--success-code` and `--failure-code`. They default to `0` and `1` respectively.
+
+```
+doc-link-checker lint --success-code 42 --failure-code 13
+```
+
+Customising the failure exit code only has an impact when everything else performs correctly, and
+linting issues are discovered by the checker. If something else goes wrong, the value specified by
+`--failure-code` is not used. An example of this is when the supplied directory to scan does not exist.
+
+## Errors
+
+For a full description of errors that may be displayed, check the upstream
+[Doc Link Checker readme](https://github.com/djmattyg007/doc-link-checker#error-codes).
+
+Note that the checker currently makes no attempt to verify URLs.
+
 ## Backwards compatibility
 
 This project aims to follow [semantic versioning](https://semver.org).
@@ -100,7 +129,8 @@ This project aims to follow [semantic versioning](https://semver.org).
 - The output of the `lint` is not currently guaranteed to be stable. In future, it may be possible
   to utilise different reporters with different output, some of which may be declared as stable.
 - What the `lint` command reports as an error may change with minor version bumps. The maintainers
-  endeavour to ensure it will not change with patch version bumps.
+  endeavour to ensure it will not change with patch version bumps, except where there are genuine
+  bugs or regressions in behaviour.
 
 ## Development
 
