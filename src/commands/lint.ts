@@ -104,7 +104,7 @@ export class LintCommand extends Command {
       const verify = verifyLinks(scanOptions.basePath, result.file, result.links);
       for await (const verifyError of verify) {
         if (!foundError) {
-          this.context.stdout.write(`--- ${result.file.path} ---\n`);
+          this.context.stdout.write(`-- ${result.file.path} --\n`);
           foundError = true;
         }
 
