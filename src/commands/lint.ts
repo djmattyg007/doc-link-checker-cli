@@ -1,3 +1,4 @@
+import { promises as fs } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
@@ -60,7 +61,7 @@ export class LintCommand extends Command {
     validator: exitCode,
   });
   failureCode = Option.String("--failure-code", "1", {
-    description: "The status code to exit with when there are errors.",
+    description: "The status code to exit with when errors are returned from the checker. This does not impact the failure code for other errors.",
     validator: exitCode,
   });
 
@@ -86,6 +87,13 @@ export class LintCommand extends Command {
       caseSensitive: this.caseSensitive,
       mdType: this.mdType,
     };
+
+    try {
+      await fs.access(scanOptions.basePath);
+    } catch {
+      this.context.stderr.write(`Supplied directory '${scanOptions.basePath}' does not exist.\n`);
+      return 1;
+    }
 
     let foundAnyError = false;
     const scan = scanFiles(includeGlobs, excludeGlobs, scanOptions);
