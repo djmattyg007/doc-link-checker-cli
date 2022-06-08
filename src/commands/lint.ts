@@ -61,7 +61,8 @@ export class LintCommand extends Command {
     validator: exitCode,
   });
   failureCode = Option.String("--failure-code", "1", {
-    description: "The status code to exit with when errors are returned from the checker. This does not impact the failure code for other errors.",
+    description:
+      "The status code to exit with when errors are returned from the checker. This does not impact the failure code for other errors.",
     validator: exitCode,
   });
 
