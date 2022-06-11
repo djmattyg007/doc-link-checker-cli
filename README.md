@@ -100,6 +100,8 @@ you're using Docusaurus, you should specify `gfm` as your Markdown type:
 doc-link-checker lint --md-type gfm
 ```
 
+This can also be configured with the environment variable `DOC_LINK_CHECKER_MDTYPE`.
+
 ### Exit codes
 
 If for some reason you need to control exit codes, you can do so with `--success-code` and `--failure-code`. They default to `0` and `1` respectively.
