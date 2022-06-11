@@ -28,7 +28,7 @@ export function makeCli(): Cli {
   const cli = new Cli({
     binaryLabel: "Doc Link Checker",
     binaryName: "doc-link-chcker",
-    binaryVersion: "1.0.1",
+    binaryVersion: "1.0.2",
   });
 
   cli.register(LintCommand);

@@ -1,6 +1,6 @@
 {
   "name": "doc-link-checker-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A CLI wrapper around doc-link-checker so you can verify documentation links in a script.",
   "license": "GPLv3",
   "type": "module",
