@@ -127,7 +127,7 @@ export class LintCommand extends Command {
     }
 
     if (!foundAnyFiles) {
-      this.context.stderr.write("Found no files!");
+      this.context.stderr.write("Found no files!\n");
       return 1;
     }
 
