@@ -67,6 +67,8 @@ export class LintCommand extends Command {
   });
 
   cwd = Option.String({ name: "directory", required: false });
+
+  debug = Option.Boolean("--debug", { hidden: true });
   /* eslint-enable @typescript-eslint/lines-between-class-members */
 
   static override usage = {
@@ -82,12 +84,26 @@ export class LintCommand extends Command {
       this.include.length > 0 ? this.include : defaultIncludeGlobs.concat(this.includeExtend);
     const excludeGlobs =
       this.exclude.length > 0 ? this.exclude : defaultExcludeGlobs.concat(this.excludeExtend);
+    if (this.debug) {
+      this.context.stderr.write("Final include glob list:\n");
+      for (const glob of includeGlobs) {
+        this.context.stderr.write(`- ${glob}\n`);
+      }
+      this.context.stderr.write("Final exclude glob list:\n");
+      for (const glob of excludeGlobs) {
+        this.context.stderr.write(`- ${glob}\n`);
+      }
+    }
 
     const scanOptions = {
       basePath: resolveBasePath(this.cwd),
       caseSensitive: this.caseSensitive,
       mdType: this.mdType,
     };
+    if (this.debug) {
+      this.context.stderr.write("Final scan options:\n");
+      this.context.stderr.write(JSON.stringify(scanOptions) + "\n");
+    }
 
     try {
       await fs.access(scanOptions.basePath);
