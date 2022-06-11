@@ -1,6 +1,6 @@
 # Doc Link Checker CLI
 
-[![CI](https://github.com/djmattyg007/doc-link-checker-cli/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/djmattyg007/doc-link-checker-cli/actions/workflows/ci.yml)
+[![CI](https://github.com/djmattyg007/doc-link-checker-cli/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/djmattyg007/doc-link-checker-cli/actions/workflows/ci.yaml)
 
 Doc Link Checker verifies links in your documentation. Primarily, this is targeted at verifying
 internal (relative) references, to ensure broken links are detected early.
