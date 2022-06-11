@@ -37,6 +37,7 @@ export class LintCommand extends Command {
   mdType = Option.String("--md-type", markdownOptions.mdDefaultType, {
     description: "Use a custom markdown parser. Defaults to standard commonmark.",
     validator: t.isEnum(markdownOptions.mdTypes),
+    env: "DOC_LINK_CHECKER_MDTYPE",
   });
 
   include = Option.Array("--include", [], {
