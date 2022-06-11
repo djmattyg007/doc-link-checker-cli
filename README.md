@@ -137,7 +137,7 @@ This project aims to follow [semantic versioning](https://semver.org).
 ### Typescript
 
 The code is written in Typescript. You can check that the code compiles sucessfully by running
-`tsc` lkike so:
+`tsc` like so:
 
 ```
 $ yarn run build
