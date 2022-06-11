@@ -225,7 +225,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.11.39":
+"@types/node@npm:16.11.39":
   version: 16.11.39
   resolution: "@types/node@npm:16.11.39"
   checksum: bc97b9773ac6b3194800f990b349fad7f66c6126dacef59291b10a2c8b6813d6f67f947b7e12a6c9952790f7065d576fe38355b8fe034a6af60f317cfc570f69
@@ -667,7 +667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clipanion@npm:^3.2.0-rc.11":
+"clipanion@npm:3.2.0-rc.11":
   version: 3.2.0-rc.11
   resolution: "clipanion@npm:3.2.0-rc.11"
   dependencies:
@@ -890,20 +890,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "doc-link-checker-cli@workspace:."
   dependencies:
-    "@types/node": ^16.11.39
-    clipanion: ^3.2.0-rc.11
-    doc-link-checker: ^1.0.6
-    prettier: ^2.6.2
-    ts-node: ^10.8.1
-    typanion: ^3.9.0
-    typescript: ^4.7.3
-    xo: ^0.50.0
+    "@types/node": 16.11.39
+    clipanion: 3.2.0-rc.11
+    doc-link-checker: 1.0.6
+    prettier: 2.6.2
+    ts-node: 10.8.1
+    typanion: 3.9.0
+    typescript: 4.7.3
+    xo: 0.50.0
   bin:
     doc-link-checker: ./index.js
   languageName: unknown
   linkType: soft
 
-"doc-link-checker@npm:^1.0.6":
+"doc-link-checker@npm:1.0.6":
   version: 1.0.6
   resolution: "doc-link-checker@npm:1.0.6"
   dependencies:
@@ -3463,7 +3463,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.6.2":
+"prettier@npm:2.6.2, prettier@npm:^2.6.2":
   version: 2.6.2
   resolution: "prettier@npm:2.6.2"
   bin:
@@ -4009,7 +4009,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.8.1":
+"ts-node@npm:10.8.1":
   version: 10.8.1
   resolution: "ts-node@npm:10.8.1"
   dependencies:
@@ -4077,7 +4077,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typanion@npm:^3.8.0, typanion@npm:^3.9.0":
+"typanion@npm:3.9.0, typanion@npm:^3.8.0":
   version: 3.9.0
   resolution: "typanion@npm:3.9.0"
   checksum: db635975e86c50399fe019010e489a9adb24a74cd19b15efb1d0f434c7dccd842a9402a6a6d60e8ab6d9f7949fd8604a019802a022427e78dbbe2e74f143527b
@@ -4135,7 +4135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.7.3":
+"typescript@npm:4.7.3, typescript@npm:^4.7.3":
   version: 4.7.3
   resolution: "typescript@npm:4.7.3"
   bin:
@@ -4145,7 +4145,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.7.3#~builtin<compat/typescript>":
+"typescript@patch:typescript@4.7.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.7.3#~builtin<compat/typescript>":
   version: 4.7.3
   resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=7ad353"
   bin:
@@ -4402,7 +4402,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"xo@npm:^0.50.0":
+"xo@npm:0.50.0":
   version: 0.50.0
   resolution: "xo@npm:0.50.0"
   dependencies:
