@@ -36,3 +36,21 @@ jobs:
 
       - name: "Run linting"
         run: "yarn run lint"
+
+  docs:
+    strategy:
+      fail-fast: false
+
+    name: "Doc Link Checker"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Checkout repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Run Doc Link Checker"
+        uses: "docker://ghcr.io/djmattyg007/doc-link-checker:1.0.2@sha256:427a912c8e71f317de685a3151932d2bc538ea9edc76d1f7308649b8d6183ed1"
+        with:
+          args: "lint --exclude-extend tests/fixtures/**"
+        env:
+          DOC_LINK_CHECKER_MDTYPE: "gfm"
