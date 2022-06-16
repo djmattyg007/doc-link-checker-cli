@@ -893,7 +893,7 @@ __metadata:
     "@types/node": 16.11.41
     clipanion: 3.2.0-rc.11
     doc-link-checker: 1.0.6
-    prettier: 2.7.0
+    prettier: 2.7.1
     ts-node: 10.8.1
     typanion: 3.9.0
     typescript: 4.7.3
@@ -3463,7 +3463,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.7.0, prettier@npm:^2.6.2":
+"prettier@npm:2.7.1":
+  version: 2.7.1
+  resolution: "prettier@npm:2.7.1"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 55a4409182260866ab31284d929b3cb961e5fdb91fe0d2e099dac92eaecec890f36e524b4c19e6ceae839c99c6d7195817579cdffc8e2c80da0cb794463a748b
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.6.2":
   version: 2.7.0
   resolution: "prettier@npm:2.7.0"
   bin:
