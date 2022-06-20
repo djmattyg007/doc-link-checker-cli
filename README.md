@@ -27,7 +27,8 @@ Or with npm:
 $ npm add doc-link-checker-cli
 ```
 
-This installs a binary named `doc-link-checker`. You may run this using `yarn run` or `npm run`, or directly in the `node_modules/.bin` folder, or as a global install.
+This installs a binary named `doc-link-checker`. You may run this using `yarn run` or `npm run`, or
+directly in the `node_modules/.bin` folder, or as a global install.
 
 ## Usage
 
@@ -65,7 +66,8 @@ doc-link-checker lint /path/to/docs
 
 ### Custom include and exclude globs
 
-By default it excludes common directories that hold vendor code, such as `node_modules` and `venv`. You can control what files are included or excluded by using `--include` and `--exclude`:
+By default it excludes common directories that hold vendor code, such as `node_modules` and `venv`.
+You can control what files are included or excluded by using `--include` and `--exclude`:
 
 ```
 doc-link-checker lint --include 'docs/**/*.md' --exclude 'docs/exclude-me/**/*.md'
@@ -77,7 +79,8 @@ ensuring that `doc-link-checker` can parse them. This is important for correct o
 ### Extend the default include and exclude globs
 
 Use of the `--include` or `--exclude` flags overrides the default inclusion and exclusion globs. If
-instead you just want to extend these defaults, you can use `--include-extend` and `--exclude-extend` instead:
+instead you just want to extend these defaults, you can use `--include-extend` and `--exclude-extend`
+instead:
 
 ```
 doc-link-checker lint --include-extend '**/*.mark' --exclude-extend '**/hidden/**'
