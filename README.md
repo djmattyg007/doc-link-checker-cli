@@ -83,6 +83,28 @@ instead you just want to extend these defaults, you can use `--include-extend` a
 doc-link-checker lint --include-extend '**/*.mark' --exclude-extend '**/hidden/**'
 ```
 
+### Using \*ignore files
+
+Instead of specifying lots of glob string as individual flags, you can store these in separate files
+and use them directly. If you just want to use your `.gitignore` file, there's a dedicated flag for
+that:
+
+```
+doc-link-checker lint --use-gitignore
+```
+
+If you want to use other files, you can pass `--ignore-file`:
+
+```
+doc-link-checker lint --ignore-file .dlcignore
+```
+
+This flag can be passed as many times as you want.
+
+Please note that these flags have known performance issues at the time of writing:
+
+https://github.com/sindresorhus/globby/issues/50
+
 ### Case sensitivity
 
 Globbing is case-insensitive by default. To make it case-sensitive, pass the `--case-sensitive` flag:
