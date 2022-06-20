@@ -6,6 +6,7 @@ Doc Link Checker verifies links in your documentation. Primarily, this is target
 internal (relative) references, to ensure broken links are detected early.
 
 This is the CLI tool, built on top of the underlying [`doc-link-checker`](https://github.com/djmattyg007/doc-link-checker) package.
+This also comes as a [standalone container image](https://github.com/djmattyg007/doc-link-checker-docker).
 
 At the moment the detection is limited to links and definitions in Markdown files only. Future
 support for images and link references is planned, as well as reStructured Text support. Please
