@@ -57,6 +57,14 @@ export class LintCommand extends Command {
       "A glob string added to the default exclude glob strings to match files that should NOT be checked. Can specify multiple times.",
   });
 
+  useGitignore = Option.Boolean("--use-gitignore", false, {
+    description: "Automatically exclude files in your gitignore file.",
+  });
+  ignoreFiles = Option.Array("--ignore-file", [], {
+    description:
+      "Path to a gitignore-like file used to exclude files. A generic form of --use-gitignore.",
+  });
+
   successCode = Option.String("--success-code", "0", {
     description: "The status code to exit with when there are no errors.",
     validator: exitCode,
@@ -100,6 +108,8 @@ export class LintCommand extends Command {
       basePath: resolveBasePath(this.cwd),
       caseSensitive: this.caseSensitive,
       mdType: this.mdType,
+      useGitignore: this.useGitignore,
+      ignoreFiles: this.ignoreFiles,
     };
     if (this.debug) {
       this.context.stderr.write("Final scan options:\n");
