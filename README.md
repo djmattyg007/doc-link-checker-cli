@@ -5,12 +5,13 @@
 Doc Link Checker verifies links in your documentation. Primarily, this is targeted at verifying
 internal (relative) references, to ensure broken links are detected early.
 
-This is the CLI tool, built on top of the underlying [`doc-link-checker`](https://github.com/djmattyg007/doc-link-checker) package.
-This also comes as a [standalone container image](https://github.com/djmattyg007/doc-link-checker-docker).
+This is the CLI tool, built on top of the underlying
+[`doc-link-checker`](https://github.com/djmattyg007/doc-link-checker) package. This also comes as a
+[standalone container image](https://github.com/djmattyg007/doc-link-checker-docker).
 
 At the moment the detection is limited to links and definitions in Markdown files only. Future
-support for images and link references is planned, as well as reStructured Text support. Please
-see the [ideas list](./ideas.txt) for other currently planned features.
+support for images and link references is planned, as well as reStructured Text support. Please see
+the [ideas list](./ideas.txt) for other currently planned features.
 
 Doc Link Checker is 100% native Typescript.
 
@@ -80,8 +81,8 @@ ensuring that `doc-link-checker` can parse them. This is important for correct o
 ### Extend the default include and exclude globs
 
 Use of the `--include` or `--exclude` flags overrides the default inclusion and exclusion globs. If
-instead you just want to extend these defaults, you can use `--include-extend` and `--exclude-extend`
-instead:
+instead you just want to extend these defaults, you can use `--include-extend` and
+`--exclude-extend` instead:
 
 ```
 doc-link-checker lint --include-extend '**/*.mark' --exclude-extend '**/hidden/**'
@@ -111,7 +112,8 @@ https://github.com/sindresorhus/globby/issues/50
 
 ### Case sensitivity
 
-Globbing is case-insensitive by default. To make it case-sensitive, pass the `--case-sensitive` flag:
+Globbing is case-insensitive by default. To make it case-sensitive, pass the `--case-sensitive`
+flag:
 
 ```
 doc-link-checker lint --case-sensitive
@@ -130,7 +132,8 @@ This can also be configured with the environment variable `DOC_LINK_CHECKER_MDTY
 
 ### Exit codes
 
-If for some reason you need to control exit codes, you can do so with `--success-code` and `--failure-code`. They default to `0` and `1` respectively.
+If for some reason you need to control exit codes, you can do so with `--success-code` and
+`--failure-code`. They default to `0` and `1` respectively.
 
 ```
 doc-link-checker lint --success-code 42 --failure-code 13
@@ -138,7 +141,8 @@ doc-link-checker lint --success-code 42 --failure-code 13
 
 Customising the failure exit code only has an impact when everything else performs correctly, and
 linting issues are discovered by the checker. If something else goes wrong, the value specified by
-`--failure-code` is not used. An example of this is when the supplied directory to scan does not exist.
+`--failure-code` is not used. An example of this is when the supplied directory to scan does not
+exist.
 
 ## Errors
 
@@ -164,8 +168,8 @@ This project aims to follow [semantic versioning](https://semver.org).
 
 ### Typescript
 
-The code is written in Typescript. You can check that the code compiles sucessfully by running
-`tsc` like so:
+The code is written in Typescript. You can check that the code compiles sucessfully by running `tsc`
+like so:
 
 ```
 $ yarn run build
@@ -183,8 +187,8 @@ $ yarn run lint
 ### Debugging
 
 At the moment, this package is mostly a thing wrapper around the underlying `doc-link-checker`
-package. If you find any issues with detection of files or handling of links, the issue is likely
-to be upstream:
+package. If you find any issues with detection of files or handling of links, the issue is likely to
+be upstream:
 
 https://github.com/djmattyg007/doc-link-checker
 
@@ -199,14 +203,12 @@ $ yarn run reformat
 
 ## License
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, version 3 of the License.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU
+General Public License as published by the Free Software Foundation, version 3 of the License.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program. If not, see https://www.gnu.org/licenses/.
+You should have received a copy of the GNU General Public License along with this program. If not,
+see https://www.gnu.org/licenses/.
