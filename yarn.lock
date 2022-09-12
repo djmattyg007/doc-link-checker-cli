@@ -874,7 +874,7 @@ __metadata:
     doc-link-checker: 1.1.0
     prettier: 2.7.1
     ts-node: 10.9.1
-    typanion: 3.9.0
+    typanion: 3.11.0
     typescript: 4.7.4
     xo: 0.51.0
   bin:
@@ -4001,10 +4001,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typanion@npm:3.9.0, typanion@npm:^3.8.0":
-  version: 3.9.0
-  resolution: "typanion@npm:3.9.0"
-  checksum: db635975e86c50399fe019010e489a9adb24a74cd19b15efb1d0f434c7dccd842a9402a6a6d60e8ab6d9f7949fd8604a019802a022427e78dbbe2e74f143527b
+"typanion@npm:3.11.0, typanion@npm:^3.8.0":
+  version: 3.11.0
+  resolution: "typanion@npm:3.11.0"
+  checksum: c36c98292618ff3b4dca0b34cd6aa6c674374ab79b386c83dc991290f1046d2e661315350915c64f680161136bd4888108ba5c70cf652b688f69499d67c617db
   languageName: node
   linkType: hard
 
