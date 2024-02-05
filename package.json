@@ -4,7 +4,7 @@
   "description": "A CLI wrapper around doc-link-checker so you can verify documentation links in a script.",
   "license": "GPLv3",
   "type": "module",
-  "packageManager": "yarn@3.7.0",
+  "packageManager": "yarn@3.8.0",
   "dependencies": {
     "clipanion": "3.2.1",
     "doc-link-checker": "1.1.0",
