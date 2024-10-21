@@ -225,10 +225,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.18.114":
-  version: 16.18.114
-  resolution: "@types/node@npm:16.18.114"
-  checksum: 2922009367d1c9c1a42ec11b66fc315629589455c7c5c7be5212fcdfe5c01655881ef7d1b862fe6fdad006a6b34e4fce0565a74db0d6a38f869b5d87601f6339
+"@types/node@npm:20.16.13":
+  version: 20.16.13
+  resolution: "@types/node@npm:20.16.13"
+  dependencies:
+    undici-types: ~6.19.2
+  checksum: 2e998ac5ae133b1a4261dc89d0034e63834d285bb2124901b9d805e7b98c0f809fc2586fd1bf7ad9a0f0348bb503fac6c41612a3ca272334b943070a3e82227c
   languageName: node
   linkType: hard
 
@@ -877,7 +879,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "doc-link-checker-cli@workspace:."
   dependencies:
-    "@types/node": 16.18.114
+    "@types/node": 20.16.13
     clipanion: 3.2.1
     doc-link-checker: 1.1.0
     prettier: 2.8.8
@@ -4143,6 +4145,13 @@ __metadata:
   version: 0.1.2
   resolution: "unc-path-regex@npm:0.1.2"
   checksum: a05fa2006bf4606051c10fc7968f08ce7b28fa646befafa282813aeb1ac1a56f65cb1b577ca7851af2726198d59475bb49b11776036257b843eaacee2860a4ec
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.19.2":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: de51f1b447d22571cf155dfe14ff6d12c5bdaec237c765085b439c38ca8518fc360e88c70f99469162bf2e14188a7b0bcb06e1ed2dc031042b984b0bb9544017
   languageName: node
   linkType: hard
 
