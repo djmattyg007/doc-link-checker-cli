@@ -225,10 +225,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.18.119":
-  version: 16.18.119
-  resolution: "@types/node@npm:16.18.119"
-  checksum: e473300cc17a77f1369262b21caf87df1899c3a1a320d4200e464adbf12c23bb923b956499332c57ad748a27956059484732b58765f7bae3be572f4819599243
+"@types/node@npm:16.18.121":
+  version: 16.18.121
+  resolution: "@types/node@npm:16.18.121"
+  checksum: be6db6b938b0dbd1083c2f0b7fc04f0e58734738f4abf4121bba829c7acd29d28ac97c84d7f222aae27381cfadcc2343a4137bdc7468023d75dd23100ec080bb
   languageName: node
   linkType: hard
 
@@ -877,7 +877,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "doc-link-checker-cli@workspace:."
   dependencies:
-    "@types/node": 16.18.119
+    "@types/node": 16.18.121
     clipanion: 3.2.1
     doc-link-checker: 1.1.0
     prettier: 2.8.8
