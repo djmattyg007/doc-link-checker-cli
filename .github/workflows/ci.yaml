@@ -20,10 +20,10 @@ jobs:
 
     steps:
       - name: "Checkout repository"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v5"
 
       - name: "Set up Node ${{ matrix.node_version }}"
-        uses: "actions/setup-node@v3"
+        uses: "actions/setup-node@v6"
         with:
           node-version: ${{ matrix.node_version }}
           cache: "yarn"
@@ -46,7 +46,7 @@ jobs:
 
     steps:
       - name: "Checkout repository"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v5"
 
       - name: "Run Doc Link Checker"
         uses: "docker://ghcr.io/djmattyg007/doc-link-checker:1.0.4@sha256:3cebcc6e4bd92961e7d68ea3a9995f64430ed01ea2c2b4741bfc93a6dc78faa5"
